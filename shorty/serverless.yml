@@ -1,0 +1,16 @@
+service: shorty
+
+provider:
+  name: aws
+  region: us-west-2
+  profile: tab-sls
+  stage: tools
+  runtime: nodejs6.10
+  environment:
+    GITHUB_TOKEN: ${env:SHORTY_BOT_TOKEN}
+
+functions:
+  githubWebhookListener:
+    handler: handler.githubWebhookListener
+    events:
+      - sns: arn:aws:sns:us-west-2:167811431063:GithubTabStream
