@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DonateVcMutation from 'mutations/DonateVcMutation'
 
-import { Paper } from 'material-ui'
+import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import Dialog from 'material-ui/Dialog'
 import Popover from 'material-ui/Popover'

@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import HeartBorderIcon from 'material-ui/svg-icons/action/favorite-border'
 import Stat from './StatComponent'
 import SettingsChildWrapper from '../SettingsChildWrapperComponent'
-import { Paper } from 'material-ui'
+import Paper from 'material-ui/Paper'
 import appTheme, {
   lighterTextColor
 } from 'theme/default'
