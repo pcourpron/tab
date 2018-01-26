@@ -1,5 +1,9 @@
 /* global fetch */
 import { getUserToken } from 'authentication/user'
+import { logPerformanceMilestone } from './js/dev/performance'
+
+var fetched = false
+
 const {
   Environment,
   Network,
@@ -26,7 +30,10 @@ async function fetchQuery (
     if (userToken) {
       headers['Authorization'] = userToken
     }
-
+    if (!fetched) {
+      logPerformanceMilestone('first_relay_fetch')
+      fetched = true
+    }
     return fetch(`//${process.env.GRAPHQL_ENDPOINT}`, {
       method: 'POST',
       headers: headers,

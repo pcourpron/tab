@@ -5,6 +5,7 @@ import { AppContainer } from 'react-hot-loader'
 import Root from './root'
 // Init Firebase
 import 'authentication/firebase'
+import {logPerformanceMilestone} from './js/dev/performance'
 
 require('./index.css')
 
@@ -18,6 +19,7 @@ const render = (Component) => {
     </AppContainer>,
     rootNode
   )
+  logPerformanceMilestone('root_render')
 }
 
 render(Root)
