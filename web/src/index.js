@@ -7,6 +7,7 @@ import Root from './root'
 // Init Firebase
 import { initializeFirebase } from 'authentication/firebaseConfig'
 initializeFirebase()
+import {logPerformanceMilestone} from './js/dev/performance'
 
 require('./index.css')
 
@@ -20,6 +21,7 @@ const render = (Component) => {
     </AppContainer>,
     rootNode
   )
+  logPerformanceMilestone('root_render')
 }
 
 render(Root)
