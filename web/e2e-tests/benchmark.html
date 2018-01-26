@@ -1,0 +1,70 @@
+<html>
+
+<iframe id="frame" src="" width="200px" height="200px" ></iframe>
+
+
+<script>
+const innerPerf = {}
+var n = 2
+
+function displayTimings () {
+  let timings = []
+  let averages = {}
+  let outerPerf = performance.getEntriesByType('measure')
+  for (let outer of outerPerf) {
+    let inner = innerPerf[outer.name]
+    var nextTiming = {
+      name: outer.name,
+      onload: outer.duration
+    }
+    Object.assign(nextTiming, inner)
+    for (const [key, value] of Object.entries(nextTiming)) {
+      if (typeof value !== 'number') {
+        continue
+      }
+      if (!averages.hasOwnProperty(key)) {
+        averages[key] = []
+      }
+      averages[key].push(value)
+    }
+    timings.push(nextTiming)
+  }
+  for (const [key, value] of Object.entries(averages)) {
+    averages[key] = value.reduce((acc, v) => acc + v, 0) / value.length
+  }
+  window.averages = Object.entries(averages).sort().map(v => v[1]).join('\t')
+  averages['name'] = 'Average'
+  timings.push(averages)
+  console.table(timings)
+}
+
+function runBench () {
+  if (n == 0) {
+    displayTimings()
+  } else {
+    n -= 1
+    console.log('Running ' + n)
+    let frame = document.getElementById('frame')
+    performance.mark('start_load_' + n)
+    frame.src = 'http://localhost:3000/newtab'
+    frame.onload = () => {
+      performance.mark('end_load_' + n)
+      performance.measure('load_' + n, 'start_load_' + n, 'end_load_' + n)
+    }
+  }
+}
+
+window.addEventListener('message', ({data}) => {
+  if (data.type === 'performance-data') {
+    innerPerf['load_' + n] = data.data
+    runBench()
+  }
+})
+
+runBench(5)
+
+
+</script>
+
+
+</html>
