@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as firebase from 'firebase'
+import * as firebaseAuth from 'firebase/auth'
 import { FirebaseAuth } from 'react-firebaseui'
 import {
   dashboardURL
@@ -162,7 +162,7 @@ class FirebaseAuthenticationUI extends React.Component {
 
   render () {
     return (
-      <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
+      <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebaseAuth} />
     )
   }
 }
