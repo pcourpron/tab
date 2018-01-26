@@ -177,6 +177,8 @@ module.exports = {
   //  ];
   // },
   plugins: [
+    // https://github.com/moment/moment/issues/2416
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // https://medium.com/@adamrackis/vendor-and-code-splitting-in-webpack-2-6376358f1923
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
