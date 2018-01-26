@@ -5,7 +5,7 @@ import {
   STORAGE_REFERRAL_DATA_REFERRING_CHANNEL,
   STORAGE_REFERRAL_DATA_REFERRING_USER
 } from '../constants'
-import XRegExp from 'xregexp'
+// import XRegExp from 'xregexp'
 
 /**
  * Determine if a username string is valid.
@@ -18,8 +18,9 @@ export const validateUsername = (username) => {
   }
   // Based on:
   // https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SignUp.html#CognitoUserPools-SignUp-request-Username
-  var re = XRegExp('^[\\p{L}\\p{M}\\p{S}\\p{N}\\p{P}]+$')
-  return re.test(username)
+  // var re = XRegExp('^[\\p{L}\\p{M}\\p{S}\\p{N}\\p{P}]+$')
+  // return re.test(username)
+  return true
 }
 
 // 'utm_medium'
