@@ -1,5 +1,5 @@
 
-import * as firebase from 'firebase'
+import * as firebaseAuth from 'firebase/auth'
 import localStorageMgr from 'utils/localstorage-mgr'
 import {
   STORAGE_KEY_USERNAME
