@@ -21,9 +21,9 @@ const htmlTemplate = new HtmlWebpackPlugin({
   title: 'Tab for a Cause',
   template: paths.appHtml,
   // https://github.com/jantimon/html-webpack-plugin/issues/481#issuecomment-262414169
-  chunks: ['vendor', 'ads', 'app'],
+  chunks: ['vendor', 'perf', 'ads', 'app'],
   chunksSortMode: function (chunk1, chunk2) {
-    var orders = ['vendor', 'ads', 'app']
+    var orders = ['vendor', 'perf', 'ads', 'app']
     var order1 = orders.indexOf(chunk1.names[0])
     var order2 = orders.indexOf(chunk2.names[0])
     if (order1 > order2) {
@@ -87,7 +87,8 @@ module.exports = {
   // The first two entry points enable "hot" CSS and auto-refreshes for JS.
   entry: {
     app: appEntry,
-    ads: './src/js/ads/ads.js'
+    ads: './src/js/ads/ads.js',
+    perf: './src/js/dev/performance.js'
   },
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
