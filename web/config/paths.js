@@ -43,5 +43,6 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),
   nodePaths: nodePaths,
-  reactPath: resolveApp(path.join('node_modules', 'react'))
+  reactPath: resolveApp(path.join('node_modules', 'react')),
+  vendorBuild: resolveApp('build/vendor')
 }
