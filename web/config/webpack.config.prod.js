@@ -241,14 +241,14 @@ module.exports = {
     }),
     new BundleAnalyzerPlugin({
       // set to 'static' for analysis or 'disabled' for none
-      analyzerMode: 'static'
+      analyzerMode: 'disabled'
     }),
     new AutoDllPlugin({
       // context: path.join(__dirname, '..'),
-      inject: false, // will inject the DLL bundle to index.html
+      inject: true, // will inject the DLL bundle to index.html
       debug: true,
-      filename: '[name].js',
-      path: './build/vendor/vendor.js',
+      filename: '[name]_[hash].js',
+      path: './build/vendor',
       entry: {
         vendor: [
           './config/vendor.js',
@@ -257,7 +257,7 @@ module.exports = {
       plugins: [
         new BundleAnalyzerPlugin({
           // set to 'static' for analysis or 'disabled' for none
-          analyzerMode: 'static'
+          analyzerMode: 'disabled'
         }),
         new webpack.optimize.UglifyJsPlugin({
           compress: {

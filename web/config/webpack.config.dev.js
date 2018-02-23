@@ -201,7 +201,7 @@ module.exports = {
     // https://github.com/th0r/webpack-bundle-analyzer
     new BundleAnalyzerPlugin({
       // set to 'static' for analysis or 'disabled' for none
-      analyzerMode: 'static'
+      analyzerMode: 'disabled'
     }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -215,7 +215,7 @@ module.exports = {
       inject: true, // will inject the DLL bundle to index.html
       debug: true,
       filename: '[name]_[hash].js',
-      path: paths.vendorBuild,
+      path: './build/vendor/',
       entry: {
         vendor: [
           './config/vendor.js',
@@ -224,7 +224,7 @@ module.exports = {
       plugins: [
         new BundleAnalyzerPlugin({
           // set to 'static' for analysis or 'disabled' for none
-          analyzerMode: 'static'
+          analyzerMode: 'disabled'
         }),
       ]
     }),
